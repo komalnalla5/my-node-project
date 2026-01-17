@@ -3,6 +3,8 @@ const router = express.Router();
 const multer = require('multer');
 const userController = require("../controllers/userController");
 const { createUserValidation } = require("../validators/UserValidator");
+const { updateUserValidation } = require("../validators/UserValidator");
+
 const path = require("path");
 
 //image store into folder 
@@ -55,9 +57,12 @@ router.get("/:id", userController.getUserData); //fetch user by id
 //all must be line wise order matter 
 router.put(
   "/update/:id",
-  upload.single("profile"),   // image 
-  updateUserValidation,       // validation
-  userController.updateUser   // controller
+  upload.single("profile"),
+  updateUserValidation,
+  userController.updateUserData
 );
+
+router.delete("/:id", userController.deleteUser);
+
 
 module.exports = router;

@@ -44,7 +44,8 @@ exports.updateUser=(id,userData,callback) => {
     db.query("UPDATE users SET ? WHERE id = ?", [userData, id], callback);
 };
 
-// //Delete users
-// exports.deleteUser= (id,callback) => {
-//     db.query("DELETE from users WHERE id = ?",[id],callback);
-// };
+
+// Delete user
+exports.deleteUser = (id, callback) => {
+  db.query("DELETE FROM users WHERE id = ?", [id], callback);
+};

@@ -51,3 +51,42 @@ exports.requireFields = (fields = []) => {
     next();
   };
 };
+
+exports.updateUserValidation = [
+  body("name")
+    .optional() //added this for update in all filed
+    .notEmpty()
+    .withMessage("Name cannot be empty"),
+
+  body("email")
+    .optional()
+    .notEmpty()
+    .withMessage("Email cannot be empty")
+    .isEmail()
+    .withMessage("Invalid email"),
+
+  body("contact_no")
+    .optional()
+    .notEmpty()
+    .withMessage("Contact cannot be empty")
+    .isNumeric()
+    .withMessage("Contact must be numeric")
+    .isLength({ min: 10, max: 10 })
+    .withMessage("Must be 10 digits"),
+
+  body("age")
+    .optional()
+    .notEmpty()
+    .withMessage("Age cannot be empty"),
+
+  body("gender")
+    .optional()
+    .notEmpty()
+    .withMessage("Gender cannot be empty"),
+
+  body("hobbey")
+    .optional()
+    .notEmpty()
+    .withMessage("Hobby cannot be empty"),
+];
+
